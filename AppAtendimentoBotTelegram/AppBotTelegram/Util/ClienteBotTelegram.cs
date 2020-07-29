@@ -7,79 +7,117 @@ namespace AppBotTelegram.Util
     /// <summary>
     /// Classe responsável pela iteração do bot com o cliente no Telegram.
     /// </summary>
-    public class ClienteBotTelegram
+    public static class ClienteBotTelegram
     {
         /// <value>
         /// Propriedade responsável pelo recebimento do token de comunicação com o bot do Telegram.
         /// </value>
-        public readonly TelegramBotClient botCliente = new TelegramBotClient("1351304466:AAEbVHuwkA-3pAMRMa1L8kdKQvJRkGYFq9g");
-
-        /// <value>
-        /// Atribui opções de mensagens de resposta para o cliente.
-        /// </value>
-        String opcao;
+        public static readonly TelegramBotClient botCliente = new TelegramBotClient("1230212831:AAGes7As-laThsW0hUG8vBzXNlPOa8uosR0");
 
         /// <summary>
-        /// Método responsável pelo gerenciamento das mensagens do atendimento com o cliente.
+        /// Método responsável por obter o carregamento das mensagens.
         /// </summary>
         /// <param name="sender">Obtem referência as propriedades dos textos.</param>
         /// <param name="e">Obtem os valores dos textos no Telegram.</param>
-        public void ObterMensagem(object sender, MessageEventArgs e)
+        public static void ObterMensagem(object sender, MessageEventArgs e)
+        {
+            GerarMensagens(e);
+        }
+
+        /// <summary>
+        /// Método responsável por gerar as mensagens do atendimento ao cliente.
+        /// </summary>
+        /// <param name="e">Obtem os valores dos textos no Telegram.</param>
+        private static void GerarMensagens(MessageEventArgs e)
         {
             Console.WriteLine("O cliente " + e.Message.Chat.FirstName + " diz: " + e.Message.Text);
 
-            opcao = e.Message.Text;
+            /// <summary>
+            /// Array responsável por definir mensagens enviadas pelo cliente.
+            /// </summary>
+            string[] msgCliente = new string[7];
 
-            if (e.Message.Text.ToLower() == "oi" || e.Message.Text.ToLower() == "olá")
-            {
+            msgCliente[0] = "oi";
+            msgCliente[1] = "olá";
+            msgCliente[2] = "estou bem, obrigado!";
+            msgCliente[3] = "consulta rápida!";
+            msgCliente[4] = "benefícios";
+            msgCliente[5] = "sim, por favor!";
+            msgCliente[6] = "não, obrigado!";
+
+            if ((e.Message.Text.ToLower() == msgCliente[0] || e.Message.Text.ToLower() == msgCliente[1])
+                || (e.Message.Text.ToUpper() == msgCliente[0] || e.Message.Text.ToUpper() == msgCliente[1]))
+
                 botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Olá "
                                                + e.Message.Chat.FirstName
-                                               + ", seja vindo-vindo(a)!"
+                                               + ", tudo bom?");
+
+            if (e.Message.Text.ToLower() == msgCliente[2] || e.Message.Text.ToLower() == msgCliente[2])
+            {
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Que ótmio Sr(a) "
+                                               + e.Message.Chat.FirstName
+                                               + "!"
                                                + Environment.NewLine
-                                               + "Por favor, digite a opção desejada: "
                                                + Environment.NewLine
-                                               + "* 1 - Cartão de Crédito Carrefour."
-                                               + Environment.NewLine
-                                               + "* 2 - Seguros Carrefour."
-                                               + Environment.NewLine
-                                               + "* 3 - Serviços Carrefour."
-                                               + Environment.NewLine
-                                               + "* 4 - Promoções."
-                                               + Environment.NewLine
-                                               + "* 5 - Finalizar.");
+                                               + "Como posso lhe ajudar?");
             }
 
-            switch (opcao)
+            if (e.Message.Text.ToLower() == msgCliente[3] || e.Message.Text.ToLower() == msgCliente[3])
+
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não Sr(a) "
+                                               + e.Message.Chat.FirstName
+                                               + "!"
+                                               + Environment.NewLine
+                                               + Environment.NewLine
+                                               + "O que gostaria de saber? ");
+
+            if (e.Message.Text.ToLower() == msgCliente[4] || e.Message.Text.ToLower() == msgCliente[4])
             {
-                case "1":
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não "
-                                               + e.Message.Chat.FirstName
-                                               + ". Para conferir os bebeficios de nosso cartão de crédito acesse: https://www.carrefoursolucoes.com.br/cartao/beneficios");
-                    break;
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
+                                                + e.Message.Chat.FirstName
+                                                + "!"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Gostaria de consultar nossos benefícos atráves de links diretos?");
+            }
 
-                case "2":
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não "
-                                               + e.Message.Chat.FirstName
-                                               + ". Para conferir nossos seguros acesse: https://www.carrefoursolucoes.com.br/seguros1");
-                    break;
+            if (e.Message.Text.ToLower() == msgCliente[5] || e.Message.Text.ToLower() == msgCliente[5])
+            {
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
+                                                + e.Message.Chat.FirstName
+                                                + ", vou disponibilizar links referêntes a todos os nossos benefícios!"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Você pode conferir com maiores detalhes as vantagens de cada benefício:"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Cartão de Crédito Carrefour"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "https://www.carrefoursolucoes.com.br/cartao/beneficios"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Seguros Carrefour"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "https://www.carrefoursolucoes.com.br/seguros1"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Serviços Carrefour"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "https://www.carrefoursolucoes.com.br/servicos"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Promoções"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "https://www.carrefoursolucoes.com.br/promocao"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Localizar Loja"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "https://www.carrefoursolucoes.com.br/encontre-loja");
 
-                case "3":
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não "
-                                               + e.Message.Chat.FirstName
-                                               + ". Para conferir nossos serviços acesse: https://www.carrefoursolucoes.com.br/servicos");
-                    break;
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Algo mais Sr(a) " + e.Message.Chat.FirstName + "?");
+            }
 
-                case "4":
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não "
-                                               + e.Message.Chat.FirstName
-                                               + ". Para conferir nossas promoções acesse: https://www.carrefoursolucoes.com.br/promocao");
-                    break;
-                case "5":
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "O Banco Carrefour agradece o seu contato "
-                                           + e.Message.Chat.FirstName
-                                           + ". Até a próxima!");
-
-                    break;
+            if (e.Message.Text.ToLower() == msgCliente[6] || e.Message.Text.ToLower() == msgCliente[6])
+            {
+                botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Sr(a) "
+                                                + e.Message.Chat.FirstName
+                                                + ", O Banco Carrefour agradece seu contato!"
+                                                + Environment.NewLine + Environment.NewLine
+                                                + "Até a próxima!");
             }
         }
     }

@@ -7,14 +7,15 @@ namespace AppBotTelegram
     {
         static void Main(string[] args)
         {
-            ClienteBotTelegram clienteBotTelegram = new ClienteBotTelegram();
+
+            Console.WriteLine("***** ATENDIMENTO AO CLIENTE *****");
             
-            clienteBotTelegram.botCliente.OnMessage += clienteBotTelegram.ObterMensagem;
-            clienteBotTelegram.botCliente.StartReceiving();
+            ClienteBotTelegram.botCliente.OnMessage += ClienteBotTelegram.ObterMensagem;
+            ClienteBotTelegram.botCliente.StartReceiving();
 
             Console.ReadKey();
 
-            clienteBotTelegram.botCliente.StopReceiving();
+            ClienteBotTelegram.botCliente.StopReceiving();
         }
     }
 }
