@@ -56,7 +56,7 @@ namespace AppBotTelegram.Util
                 msgCliente[6] = "ok";
                 msgCliente[7] = "não, obrigado!";
 
-                if ((e.Message.Text.ToLower() == msgCliente[0] || e.Message.Text.ToLower() == msgCliente[1])
+                if ((e.Message.Text.ToLower() == msgCliente[0] || e.Message.Text.ToLower() == msgCliente[1]) 
                     || (e.Message.Text.ToUpper() == msgCliente[0] || e.Message.Text.ToUpper() == msgCliente[1]))
 
                     botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Olá "
