@@ -12,7 +12,7 @@ namespace AppBotTelegram.Util
         /// <value>
         /// Propriedade responsável pelo recebimento do token de comunicação com o bot do Telegram.
         /// </value>
-        public static readonly TelegramBotClient botCliente = new TelegramBotClient("1230212831:AAGes7As-laThsW0hUG8vBzXNlPOa8uosR0");
+        public static readonly TelegramBotClient botCliente = new TelegramBotClient("ADICIONE UM TOKEN DA API DO TELEGRAM AQUI!");
 
         /// <summary>
         /// Método responsável por obter o carregamento das mensagens.
