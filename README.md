@@ -1,12 +1,14 @@
 <h1 align="center">DotNet Core Atendimento Telegram</h1>
 
 ## :computer: Projeto
-Repositório de aplicação responsável por simular o atendimento de clientes de uma multinacional em um Chabot no aplicativo Telegram.
+Repositório de aplicação responsável por simular o atendimento de clientes para uma multinacional em um Chabot no aplicativo Telegram, 
+projeto desenvolvido durante no evento [Tech Challenge](https://digitalinnovation.one/) da Digital Innovation One. 
 
-O cliente entra em contato solicitando ajuda para consultar informações sobre benefícios da instituição, o Bot por sua vez lhe fornece esse atendimento de forma 
+## :rocket: Funcionalidade
+O cliente entra em contato solicitando ajuda para consultar informações sobre benefícios da instituição, o bot por sua vez lhe fornece esse atendimento de forma 
 rápida e simplificada.
 
-Projeto desenvolvido durante no evento [Tech Challenge](https://digitalinnovation.one/) da Digital Innovation One. 
+No caso desse atendimento o bot da uma sugestão ao cliente para acessar links no site da instituição, com isso o cliente poderá acessar qualquer um dos benefícios e obter maiores detalhes.
 
 ## :wrench: Recursos Utilizados
 - [Microsoft Visual Studio 2019](https://visualstudio.microsoft.com/pt-br/downloads/).
