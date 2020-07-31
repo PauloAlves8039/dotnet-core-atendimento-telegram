@@ -12,7 +12,7 @@ namespace AppBotTelegram.Util
         /// <value>
         /// Propriedade responsável pelo recebimento do token de comunicação com o bot do Telegram.
         /// </value>
-        public static readonly TelegramBotClient botCliente = new TelegramBotClient("ADICIONE UM TOKEN DA API DO TELEGRAM AQUI!");
+        public static readonly TelegramBotClient botCliente = new TelegramBotClient("1230212831:AAGes7As-laThsW0hUG8vBzXNlPOa8uosR0");
 
         /// <summary>
         /// Método responsável por obter o carregamento das mensagens.
@@ -36,7 +36,7 @@ namespace AppBotTelegram.Util
         /// Método responsável por gerar as mensagens do atendimento ao cliente.
         /// </summary>
         /// <param name="e">Obtem os valores dos textos no Telegram.</param>
-        private static void GerarMensagens(MessageEventArgs e)
+        private async static void GerarMensagens(MessageEventArgs e)
         {
             try
             {
@@ -49,8 +49,8 @@ namespace AppBotTelegram.Util
 
                 msgCliente[0] = "oi";
                 msgCliente[1] = "olá";
-                msgCliente[2] = "estou bem, obrigado!";
-                msgCliente[3] = "consulta rápida!";
+                msgCliente[2] = "estou bem!";
+                msgCliente[3] = "informação";
                 msgCliente[4] = "benefícios";
                 msgCliente[5] = "sim";
                 msgCliente[6] = "ok";
@@ -59,13 +59,13 @@ namespace AppBotTelegram.Util
                 if ((e.Message.Text.ToLower() == msgCliente[0] || e.Message.Text.ToLower() == msgCliente[1]) 
                     || (e.Message.Text.ToUpper() == msgCliente[0] || e.Message.Text.ToUpper() == msgCliente[1]))
 
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Olá "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Olá Sr(a) "
                                                    + e.Message.Chat.FirstName
                                                    + ", tudo bom?");
 
                 if (e.Message.Text.ToLower() == msgCliente[2] || e.Message.Text.ToLower() == msgCliente[2])
                 {
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Que ótmio Sr(a) "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Que ótimo Sr(a) "
                                                    + e.Message.Chat.FirstName
                                                    + "!"
                                                    + Environment.NewLine
@@ -75,7 +75,7 @@ namespace AppBotTelegram.Util
 
                 if (e.Message.Text.ToLower() == msgCliente[3] || e.Message.Text.ToLower() == msgCliente[3])
 
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não Sr(a) "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Pois não Sr(a) "
                                                    + e.Message.Chat.FirstName
                                                    + "!"
                                                    + Environment.NewLine
@@ -84,7 +84,7 @@ namespace AppBotTelegram.Util
 
                 if (e.Message.Text.ToLower() == msgCliente[4] || e.Message.Text.ToLower() == msgCliente[4])
                 {
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
                                                     + e.Message.Chat.FirstName
                                                     + "!"
                                                     + Environment.NewLine + Environment.NewLine
@@ -93,7 +93,7 @@ namespace AppBotTelegram.Util
 
                 if (e.Message.Text.ToLower() == msgCliente[5] || e.Message.Text.ToLower() == msgCliente[5])
                 {
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Ok Sr(a) "
                                                     + e.Message.Chat.FirstName
                                                     + ", vou disponibilizar links referêntes a todos os nossos benefícios!"
                                                     + Environment.NewLine + Environment.NewLine
@@ -123,12 +123,12 @@ namespace AppBotTelegram.Util
 
                 if (e.Message.Text.ToLower() == msgCliente[6] || e.Message.Text.ToLower() == msgCliente[6])
                 {
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Algo mais Sr(a) " + e.Message.Chat.FirstName + "?");
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Algo mais Sr(a) " + e.Message.Chat.FirstName + "?");
                 }
 
                 if (e.Message.Text.ToLower() == msgCliente[7] || e.Message.Text.ToLower() == msgCliente[7])
                 {
-                    botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Sr(a) "
+                    await botCliente.SendTextMessageAsync(e.Message.Chat.Id, "Sr(a) "
                                                     + e.Message.Chat.FirstName
                                                     + ", O Banco Carrefour agradece seu contato!"
                                                     + Environment.NewLine + Environment.NewLine
